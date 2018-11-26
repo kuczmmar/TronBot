@@ -28,7 +28,6 @@ int Map::maxplayer(state_minmax *ptr, int alpha, int beta, int depthleft)
     if (depthleft == 0 || wallsAround)
     {
         int vor = voronoi(ptr);
-        cerr << "voronio max " << vor << endl;
         return vor;
     }
 
@@ -54,12 +53,12 @@ int Map::maxplayer(state_minmax *ptr, int alpha, int beta, int depthleft)
             int score = minplayer(child, alpha, beta, depthleft - 1);
             child->wyn = score;
             if (score >= beta)
-                return score + 1; //+1????????????
+                return score + 1;
             if (score > alpha)
                 alpha = score;
         }
     }
-    return alpha; //////// alpha +1??????
+    return alpha;
 }
 
 int Map::minplayer(state_minmax *ptr, int alpha, int beta, int depthleft)
